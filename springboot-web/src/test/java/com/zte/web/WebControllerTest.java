@@ -23,12 +23,12 @@ public class WebControllerTest {
         System.out.println("result : "+responseString);
     }
 
-//    @Test
-//    public void getUsers() throws Exception {
-//        String responseString = mockMvc.perform(MockMvcRequestBuilders.get("/getUsers"))
-//                .andReturn().getResponse().getContentAsString();
-//        System.out.println("result : "+responseString);
-//    }
+    @Test
+    public void getUsers() throws Exception {
+        String responseString = mockMvc.perform(MockMvcRequestBuilders.get("/getUsers"))
+                .andReturn().getResponse().getContentAsString();
+        System.out.println("result : "+responseString);
+    }
 
 
 //    @Test
