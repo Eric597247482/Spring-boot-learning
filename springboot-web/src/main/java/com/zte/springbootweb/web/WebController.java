@@ -3,6 +3,7 @@ package com.zte.springbootweb.web;
 import com.zte.springbootweb.model.User;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,5 +54,24 @@ public class WebController {
             }
         }
 
+    }
+
+    @RequestMapping(value = "get/{name}", method = RequestMethod.GET)
+    public User get (@PathVariable String name) {
+        List<User> users = getUsers();
+//        User user = new User();
+//        for (int i =0; i < users.size(); i++) {
+//            user = users.get(i);
+//            if(user.getName().equals(name)) {
+//                return user;
+//            }
+//        }
+
+//        Optional<User> optional = users.stream().filter(
+//                    user -> user.getName().equals(name)).findFirst();
+        User user = users.stream().filter(user1 -> user1.getName().equals(name)).
+                        findFirst().orElseGet(() -> new User());
+
+        return user;
     }
 }
